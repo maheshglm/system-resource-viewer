@@ -40,4 +40,4 @@ docker run --detach -p 80:8080 --name web web:latest
 ## Integration with GitHub Actions
 
 Continuous Integration pipeline is added using GitHub Actions to build the image and push the images to Docker Hub
-Pipeline for building api docker is available here: `.github/workflows/build_web_docker.yml`
+Pipeline for building web docker image is available here: `.github/workflows/build_web_docker.yml`
