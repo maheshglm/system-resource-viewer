@@ -35,3 +35,9 @@ docker run --detach -p 80:8080 --name web web:latest
 4. Multi-stage builds helped to wrap React application on top of Nginx web server which helps to avoid creating additional container for Nginx explicitly
 5. Dockerignore needs to be added to exclude unwanted content to copied into the container which will again increases the size of the image
 6. The configuration for nginx to run as non-root user is referred from Google
+
+
+## Integration with GitHub Actions
+
+Continuous Integration pipeline is added using GitHub Actions to build the image and push the images to Docker Hub
+Pipeline for building api docker is available here: `.github/workflows/build_web_docker.yml`

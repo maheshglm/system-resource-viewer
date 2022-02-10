@@ -39,3 +39,8 @@ docker run --shm-size=256m --detach -p 5000:5000 --name api -e GUNICORN_WORKERS=
 4. Expose only relevant ports in the Dockerfile
 5. For easy maintanance using ARG and ENV instructions is encouraged
 6. Avoid using :latest base images
+
+## Integration with GitHub Actions
+
+Continuous Integration pipeline is added using GitHub Actions to build the image and push the images to Docker Hub
+Pipeline for building api docker is available here: `.github/workflows/build_api_docker.yml`
