@@ -6,9 +6,6 @@ on: workflow_dispatch
 #     paths:
 #       - api/**
 
-env:
-  IMAGE_REPO: sys-resource-view-api
-
 jobs:
 
   build:
@@ -38,6 +35,6 @@ jobs:
         file: ./api/Dockerfile
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_REPO:${{ github.sha }}
-          ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_REPO:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/sys-resource-view-api:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/sys-resource-view-api:latest
     
