@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  api:
+    env_file: ./config/.prod.env
+    container_name: resources_api
+    restart: unless-stopped
+    build: ./api
+    ports:
+      - "5000:5000"
+  
+  web:
+    container_name: resources_web
+    restart: unless-stopped
+    build: ./sys-stats
+    ports:
+      - "80:8080"
+    depends_on:
+      - api
