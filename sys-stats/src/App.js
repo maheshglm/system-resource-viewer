@@ -20,14 +20,7 @@ class App extends Component {
 
   async loadData() {
     try {
-      const host = (process.env.REACT_APP_API_HOST) 
-                    ? process.env.REACT_APP_API_HOST
-                    : 'localhost' ;
-
-      console.log(host)
-
-      //const res = await fetch('http://' + host +':5000/stats');
-      const res = await fetch('http://resourceapi:5000/stats');
+      const res = await fetch('http://' + env.REACT_APP_API_HOST +':5000/stats');
       const blocks = await res.json();
       const ram = blocks.ram;
       const cpu = blocks.cpu;
@@ -49,7 +42,6 @@ class App extends Component {
           <div>
             <h3>CPU : {this.state.cpu}</h3>
             <h3>RAM : {this.state.ram}</h3>
-            <h3>API_HOST: {process.env.REACT_APP_API_HOST}</h3>
           </div>
         </header>
       </div>
