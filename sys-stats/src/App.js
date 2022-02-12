@@ -20,8 +20,8 @@ class App extends Component {
 
   async loadData() {
     try {
-      const host = (process.env.API_HOST) 
-                    ? process.env.API_HOST
+      const host = (process.env.REACT_APP_API_HOST) 
+                    ? process.env.REACT_APP_API_HOST
                     : 'localhost' ;
 
       console.log(host)
@@ -48,6 +48,7 @@ class App extends Component {
           <div>
             <h3>CPU : {this.state.cpu}</h3>
             <h3>RAM : {this.state.ram}</h3>
+            <h3>API_HOST: {process.env.REACT_APP_API_HOST}</h3>
           </div>
         </header>
       </div>
