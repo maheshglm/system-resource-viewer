@@ -26,7 +26,8 @@ class App extends Component {
 
       console.log(host)
 
-      const res = await fetch('http://' + host +':5000/stats');
+      //const res = await fetch('http://' + host +':5000/stats');
+      const res = await fetch('http://resourceapi:5000/stats');
       const blocks = await res.json();
       const ram = blocks.ram;
       const cpu = blocks.cpu;
