@@ -20,7 +20,13 @@ class App extends Component {
 
   async loadData() {
     try {
-      const res = await fetch('http://localhost:5000/stats');
+      const host = (process.env.API_HOST) 
+                    ? process.env.API_HOST
+                    : 'localhost' ;
+
+      console.log(host)
+
+      const res = await fetch('http://' + host +':5000/stats');
       const blocks = await res.json();
       const ram = blocks.ram;
       const cpu = blocks.cpu;

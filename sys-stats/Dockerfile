@@ -38,4 +38,6 @@ RUN chown -R nginx:nginx .
 
 USER nginx
 
+EXPOSE 8080
+
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
