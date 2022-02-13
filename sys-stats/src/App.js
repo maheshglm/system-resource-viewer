@@ -42,6 +42,7 @@ class App extends Component {
           <div>
             <h3>CPU : {this.state.cpu}</h3>
             <h3>RAM : {this.state.ram}</h3>
+            <h3>API_URL : {window._env_.API_URL}</h3>
           </div>
         </header>
       </div>
