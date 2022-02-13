@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:lts-alpine3.14
+ARG NODE_IMAGE=node:16-alpine
 ARG NGINX_IMAGE=nginx:1.21.6
 
 FROM ${NODE_IMAGE} AS builder
@@ -34,10 +34,17 @@ RUN rm -rf ./*
 
 COPY --from=builder /app/build .
 
+# Copy .env file and shell script to container
+COPY ./env.sh .
+COPY .env .
+
+# Make shell script executable
+RUN chmod +x env.sh
+
 RUN chown -R nginx:nginx .
 
 USER nginx
 
 EXPOSE 8080
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/bin/sh", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]

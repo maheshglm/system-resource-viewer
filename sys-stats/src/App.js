@@ -20,7 +20,8 @@ class App extends Component {
 
   async loadData() {
     try {
-      const res = await fetch('http://resourceapi:5000/stats');
+      const apiurl = window._env_.API_URL;
+      const res = await fetch(apiurl + '/stats');
       const blocks = await res.json();
       const ram = blocks.ram;
       const cpu = blocks.cpu;
@@ -32,7 +33,6 @@ class App extends Component {
       console.log(e);
     }
   }
-
 
   render() {
     return (
