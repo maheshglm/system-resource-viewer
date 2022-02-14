@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: smartcow
+  name: resourceconfig
+data:
+  gunicorn_workers: "3"
+  #api_url: "http://192.168.64.3/"
+  api_url: "http://<minikube ip>/"

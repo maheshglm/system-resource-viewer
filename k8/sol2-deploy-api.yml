@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resourceapi
+  namespace: smartcow
+  labels:
+    app: resourceapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resourceapi
+  template:
+    metadata:
+      labels:
+        app: resourceapi
+    spec:
+      containers:
+        - name: api
+          image: mahesh1985/sys-resource-view-api:03429351723713db7c7834ad146c6e1fe4b4c091
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+          - name: GUNICORN_WORKERS
+            valueFrom:
+              configMapKeyRef:
+                name: resourceconfig          
+                key: gunicorn_workers
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: resourceapi
+  namespace: smartcow
+  labels:
+    app: resourceapi
+spec:
+  selector:
+    app: resourceapi
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP

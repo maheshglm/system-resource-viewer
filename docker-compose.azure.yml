@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  api:
+    container_name: resources_api
+    restart: unless-stopped
+    image: mahesh1985/sys-resource-view-api:03429351723713db7c7834ad146c6e1fe4b4c091
+    ports:
+      - "5000:5000"
+  
+  web:
+    container_name: resources_web
+    restart: unless-stopped
+    image: mahesh1985/sys-resource-view-web:758213cf2f881964c5fe2560295e6577e72bcc14
+    ports:
+      - "80:8080"
+    depends_on:
+      - api
+

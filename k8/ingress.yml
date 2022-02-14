@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  namespace: smartcow
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: resourceweb
+            port:
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  namespace: smartcow
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /stats
+        pathType: Prefix
+        backend:
+          service:
+            name: resourceapi
+            port:
+              number: 5000

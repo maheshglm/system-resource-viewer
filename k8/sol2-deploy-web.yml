@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resourceweb
+  namespace: smartcow
+  labels:
+    app: resourceweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resourceweb
+  template:
+    metadata:
+      labels:
+        app: resourceweb
+    spec:
+      containers:
+        - name: web
+          image: mahesh1985/sys-resource-view-web:758213cf2f881964c5fe2560295e6577e72bcc14
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+          - name: API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: resourceconfig          
+                key: api_url
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resourceweb
+  namespace: smartcow
+  labels:
+    app: resourceweb
+spec:
+  selector:
+    app: resourceweb
+  ports:
+  - port: 8080
+    targetPort: 8080
