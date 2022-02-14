@@ -27,6 +27,8 @@ spec:
               configMapKeyRef:
                 name: resourceconfig          
                 key: gunicorn_workers
+# can add resource requirements, readiness probes and liveness probes
+
 ---
 
 apiVersion: v1
